@@ -16,7 +16,7 @@ output_path="../processed_data/Gowalla_vldb"
 dataset_name="Gowalla"
 
 if not os.path.isdir(output_path):
-    os.makedir(output_path)
+    os.mkdir(output_path)
 
 df_all = pd.read_csv(data_path + dataset_name+'_checkins.txt',sep='\t',names=['userid','placeid','datetime'])
 print(df_all.shape)

@@ -24,7 +24,7 @@ output_path="../processed_data/Gowalla_vldb/"
 dataset_name="Gowalla"
 
 if not os.path.isdir(output_path):
-    os.makedir(output_path)
+    os.mkdir(output_path)
 
 df_train = pd.read_csv(data_path + dataset_name+'_train.txt',sep='\t',names=['userid','placeid','times'],dtype=int)
 df_test = pd.read_csv(data_path + dataset_name+'_test.txt',sep='\t',names=['userid','placeid','times'],dtype=int)
