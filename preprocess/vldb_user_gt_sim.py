@@ -22,9 +22,9 @@ df_all = pd.read_csv(data_path + dataset_name+'_checkins.txt',sep='\t',names=['u
 print(df_all.shape)
 
 
-userid_all_list = df_all['userid'].tolist()
-placeid_all_list = df_all['placeid'].tolist()
-datetime_all_list = df_all['datetime'].tolist()
+userid_all_list = df_all['userid'].values
+placeid_all_list = df_all['placeid'].values
+datetime_all_list = df_all['datetime'].values
 userid_uni_list = np.unique(userid_all_list)
 placeid_uni_list = np.unique(placeid_all_list)
 user_num = len(userid_uni_list)
@@ -38,12 +38,12 @@ n_unique_user_place_pairs=len(set(zip(userid_all_list,placeid_all_list)))
 df_train = pd.read_csv(data_path + dataset_name+'_train.txt',sep='\t',names=['userid','placeid','times'])
 df_test = pd.read_csv(data_path + dataset_name+'_test.txt',sep='\t',names=['userid','placeid','times'])
 df_tune = pd.read_csv(data_path + dataset_name+'_tune.txt',sep='\t',names=['userid','placeid','times'])
-userid_test_list = df_test['userid'].tolist()
-placeid_test_list = df_test['placeid'].tolist()
-userid_train_list = df_train['userid'].tolist()
-placeid_train_list = df_train['placeid'].tolist()
-userid_tune_list = df_tune['userid'].tolist()
-placeid_tune_list = df_tune['placeid'].tolist()
+userid_test_list = df_test['userid'].values
+placeid_test_list = df_test['placeid'].values
+userid_train_list = df_train['userid'].values
+placeid_train_list = df_train['placeid'].values
+userid_tune_list = df_tune['userid'].values
+placeid_tune_list = df_tune['placeid'].values
 
 
 
@@ -94,7 +94,7 @@ norm_user_vector=np.zeros((user_length,))
 for user_idx in xrange(user_length):
     #user_vector[user_idx,:] = (np.dot(hours_vector[user_idx,:,:],trans_matrix)/trans_matrix.sum(axis=0).reshape(1,-1)).reshape(1,-1)
     temp_data= (np.dot(hours_vector[user_idx,dict_idx_exist[user_idx],:],trans_matrix)/trans_matrix.sum(axis=0).reshape(1,-1)).reshape(-1,)
-    data.extend(temp_data.tolist())
+    data.extend(temp_data.values)
     indices.extend(dict_idx_day_exist[user_idx])
     indptr.append(len(indices))
     norm_user_vector[user_idx] = LA.norm(temp_data)
