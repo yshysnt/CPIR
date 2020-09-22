@@ -12,7 +12,7 @@ from collections import Counter
 
 
 data_path = '../raw_data/Gowalla_vldb/'
-output_path="../processed_data/Gowalla_vldb"
+output_path="../processed_data/Gowalla_vldb/"
 dataset_name="Gowalla"
 
 if not os.path.isdir(output_path):
