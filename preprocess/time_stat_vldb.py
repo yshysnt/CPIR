@@ -70,7 +70,7 @@ for idx,userid in enumerate(userid_train_list):
 hours_vector = np.zeros((place_length,24))
 for idx,datetime in enumerate(datetime_all_list):
     hours_vector[placeid_all_list[idx],time.gmtime(datetime_all_list[idx]).tm_hour]+=R_train[userid_all_list[idx],placeid_all_list[idx]]
-for idx in xrange(place_length):
+for idx in range(place_length):
     if not LA.norm(hours_vector[idx,:])==0:
         hours_vector[idx,:]=hours_vector[idx,:]/LA.norm(hours_vector[idx,:])
 
@@ -78,12 +78,12 @@ for idx in xrange(place_length):
 
 
 trans_matrix = np.zeros((24,24))
-for i in xrange(24):
+for i in range(24):
     trans_matrix[i,i] = 1
     trans_matrix[i,(i-1)%24] = 0.5
     trans_matrix[i,(i+1)%24] = 0.5
 hours_acco_matrix = np.dot(hours_vector,trans_matrix)
-for idx in xrange(place_length):
+for idx in range(place_length):
     if not LA.norm(hours_acco_matrix[idx,:])==0:
         hours_acco_matrix[idx,:]=hours_acco_matrix[idx,:]/LA.norm(hours_acco_matrix[idx,:])
 
