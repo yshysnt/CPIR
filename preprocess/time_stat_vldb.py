@@ -24,20 +24,20 @@ print(df_all.shape)
 
 
 
-userid_all_list = df_all['userid'].get_values()
-placeid_all_list = df_all['placeid'].get_values()
-datetime_all_list = df_all['datetime'].get_values()
+userid_all_list = df_all['userid'].tolist()
+placeid_all_list = df_all['placeid'].tolist()
+datetime_all_list = df_all['datetime'].tolist()
 
 
 df_train = pd.read_csv(data_path + dataset_name+'_train.txt',sep='\t',names=['userid','placeid','times'])
 df_test = pd.read_csv(data_path + dataset_name+'_test.txt',sep='\t',names=['userid','placeid','times'])
 df_tune = pd.read_csv(data_path + dataset_name+'_tune.txt',sep='\t',names=['userid','placeid','times'])
-userid_test_list = df_test['userid'].get_values()
-placeid_test_list = df_test['placeid'].get_values()
-userid_train_list = df_train['userid'].get_values()
-placeid_train_list = df_train['placeid'].get_values()
-userid_tune_list = df_tune['userid'].get_values()
-placeid_tune_list = df_tune['placeid'].get_values()
+userid_test_list = df_test['userid'].tolist()
+placeid_test_list = df_test['placeid'].tolist()
+userid_train_list = df_train['userid'].tolist()
+placeid_train_list = df_train['placeid'].tolist()
+userid_tune_list = df_tune['userid'].tolist()
+placeid_tune_list = df_tune['placeid'].tolist()
 
 
 
@@ -50,9 +50,9 @@ place_length = sizedata[1]
 
 
 df_coos = pd.read_csv(data_path + dataset_name+'_poi_coos.txt',sep='\t',names=['placeid','lat','lon'])
-placeid_occs_list = df_coos['placeid'].get_values()
-lat_list = df_coos['lat'].get_values()
-lon_list = df_coos['lon'].get_values()
+placeid_occs_list = df_coos['placeid'].tolist()
+lat_list = df_coos['lat'].tolist()
+lon_list = df_coos['lon'].tolist()
 lat_lng_vector = np.zeros((place_length,2))
 for idx,placeid in enumerate(placeid_occs_list):
     lat_lng_vector[placeid,:] = [lat_list[idx],lon_list[idx]]

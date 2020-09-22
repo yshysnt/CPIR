@@ -12,7 +12,7 @@ import time
 
 
 def save_mat_file(df,data_path,filename):
-    values = df.get_values()
+    values = df.tolist()
     values[:,0] = values[:,0] + 1
     values[:,1] = values[:,1] + 1
     np.savetxt(data_path+filename,values,fmt='%d')
