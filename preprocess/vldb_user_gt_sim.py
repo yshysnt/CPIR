@@ -94,7 +94,7 @@ norm_user_vector=np.zeros((user_length,))
 for user_idx in range(user_length):
     #user_vector[user_idx,:] = (np.dot(hours_vector[user_idx,:,:],trans_matrix)/trans_matrix.sum(axis=0).reshape(1,-1)).reshape(1,-1)
     temp_data= (np.dot(hours_vector[user_idx,dict_idx_exist[user_idx],:],trans_matrix)/trans_matrix.sum(axis=0).reshape(1,-1)).reshape(-1,)
-    data.extend(temp_data.values)
+    data.extend(temp_data.tolist())
     indices.extend(dict_idx_day_exist[user_idx])
     indptr.append(len(indices))
     norm_user_vector[user_idx] = LA.norm(temp_data)
