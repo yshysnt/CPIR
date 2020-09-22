@@ -29,7 +29,7 @@ if not os.path.isdir(output_path):
 df_train = pd.read_csv(data_path + dataset_name+'_train.txt',sep='\t',names=['userid','placeid','times'],dtype=int)
 df_test = pd.read_csv(data_path + dataset_name+'_test.txt',sep='\t',names=['userid','placeid','times'],dtype=int)
 df_tune = pd.read_csv(data_path + dataset_name+'_tune.txt',sep='\t',names=['userid','placeid','times'],dtype=int)
-save_mat_file(df_train,data_path , dataset_name+'_train_mat.txt')
-save_mat_file(df_test,data_path , dataset_name+'_test_mat.txt')
-save_mat_file(df_tune,data_path , dataset_name+'_tune_mat.txt')
+save_mat_file(df_train,output_path , dataset_name+'_train_mat.txt')
+save_mat_file(df_test,output_path , dataset_name+'_test_mat.txt')
+save_mat_file(df_tune,output_path , dataset_name+'_tune_mat.txt')
 
