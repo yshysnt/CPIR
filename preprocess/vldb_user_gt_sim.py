@@ -77,7 +77,7 @@ for idx,userid in enumerate(userid_train_list):
 
 # transform matrix
 trans_matrix = np.ones((24,24))/2
-for i in xrange(24):
+for i in range(24):
     trans_matrix[i,i] = 1
     trans_matrix[i,(i-1)%24] = 0.75
     trans_matrix[i,(i+1)%24] = 0.75
@@ -91,7 +91,7 @@ indptr=[0]
 indices=[]
 data=[]
 norm_user_vector=np.zeros((user_length,))
-for user_idx in xrange(user_length):
+for user_idx in range(user_length):
     #user_vector[user_idx,:] = (np.dot(hours_vector[user_idx,:,:],trans_matrix)/trans_matrix.sum(axis=0).reshape(1,-1)).reshape(1,-1)
     temp_data= (np.dot(hours_vector[user_idx,dict_idx_exist[user_idx],:],trans_matrix)/trans_matrix.sum(axis=0).reshape(1,-1)).reshape(-1,)
     data.extend(temp_data.values)
@@ -104,7 +104,7 @@ user_vec_spr = csr_matrix((data,indices,indptr),shape=(user_length,place_num*24)
 
 user_sim=np.zeros((user_length,user_length))
 user_vec = user_vec_spr.toarray()
-for user_idx in xrange(user_length):
+for user_idx in range(user_length):
     if user_idx %100 == 0:
         print(user_idx)
     idx_com = dict_idx_day_exist[user_idx]
