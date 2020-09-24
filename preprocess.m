@@ -4,7 +4,7 @@
 % This algorithm is to solve the fowllowing function
 % \min_F tr(F^\top\Theta^UF)+tr(F\Theta^PF^\top)+\|F-Y\|^2_F
 function [Tr,Te,Content]=preprocess(configs)
-cachefile=[configs.dataset_path,configs.dataset_name,'_preprocess_cache.mat'];
+cachefile=[configs.processed_dataset_path,configs.dataset_name,'_preprocess_cache.mat'];
 if exist(cachefile,'file')
     fprintf('loading preprocess cache file found at %s...\n',cachefile);
     load(cachefile,'-mat');
@@ -12,7 +12,7 @@ if exist(cachefile,'file')
     Tr.L_user_full=full(Tr.L_user);
     Tr.L_poi_full=full(Tr.L_poi);
 else
-    if strcmp(configs.dataset_path,'toy_dataset/')
+    if strcmp(configs.raw_dataset_path,'toy_dataset/')
         Tr.itemnum=configs.toy.itemnum;
         Tr.usernum=configs.toy.usernum;
         configs.n_clusters=configs.toy.n_clusters;
@@ -50,23 +50,23 @@ else
     else
     %----------------------------------load data files------------------------------------------%
     fprintf('preprocess cache not found, building from scratch...\n');
-    raw_mat_file=[configs.dataset_path,configs.dataset_name,'_preprocess_raw.mat'];
+    raw_mat_file=[configs.processed_dataset_path,configs.dataset_name,'_preprocess_raw.mat'];
     if exist(raw_mat_file,"file")
         fprintf("loading raw data from mat file...\n");
         load(raw_mat_file,'-mat');
     else
         fprintf('loading raw data...\n');
-        trainingfile=[configs.dataset_path, configs.dataset_name, '_train_mat.txt'];
-        testingfile=[configs.dataset_path, configs.dataset_name, '_test_mat.txt'];
-        relationfile = [configs.dataset_path, configs.dataset_name, '_social_relations.txt'];
-        pidNNfile=[configs.dataset_path, configs.dataset_name, '_train_GNN.txt'];  
+        trainingfile=[configs.processed_dataset_path, configs.dataset_name, '_train_mat.txt'];
+        testingfile=[configs.processed_dataset_path, configs.dataset_name, '_test_mat.txt'];
+        relationfile = [configs.raw_dataset_path, configs.dataset_name, '_social_relations.txt'];
+        pidNNfile=[configs.processed_dataset_path, configs.dataset_name, '_train_GNN.txt'];  
         % lizx: produced by user_similarity_TG.ipynb
         % lizx: produced by vldb_user_gt_sim.ipynb
-        usersimfile=[configs.dataset_path,  'user_similarity.txt'];
-        weightGNNfile=[configs.dataset_path, configs.dataset_name, '_train_GNN_weight.txt'];
-        weightTNNfile=[configs.dataset_path, configs.dataset_name, '_train_TNN_weight.txt'];
-        sizefile=[configs.dataset_path, configs.dataset_name, '_data_size.txt'];  
-        poi_coos_file=[configs.dataset_path,configs.dataset_name,'_poi_coos.txt'];
+        usersimfile=[configs.processed_dataset_path,  'user_similarity.txt'];
+        weightGNNfile=[configs.processed_dataset_path, configs.dataset_name, '_train_GNN_weight.txt'];
+        weightTNNfile=[configs.processed_dataset_path, configs.dataset_name, '_train_TNN_weight.txt'];
+        sizefile=[configs.raw_dataset_path, configs.dataset_name, '_data_size.txt'];  
+        poi_coos_file=[configs.raw_dataset_path,configs.dataset_name,'_poi_coos.txt'];
         trainingdata=dlmread(trainingfile);
         relationdata=dlmread(relationfile);
         user_sim = dlmread(usersimfile); 

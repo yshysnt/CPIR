@@ -1,13 +1,9 @@
 % data path
 configs.dataset_name='Gowalla';
-% configs.dataset_name='Yelp';
-configs.dataset_path = 'Gowalla_vldb/';
-% configs.dataset_path = 'Yelp_vldb/';
-% configs.dataset_path = 'Gowalla_vldb-users leq 1000-pois leq 1000/';
-% configs.dataset_path = 'Yelp_vldb-users leq 1000-pois leq 1000/';
-% configs.dataset_path = 'toy_dataset/';
-configs.result_path = [configs.dataset_path,'R-apg_2obj-F[2]-lambda1=1,lambda2=0.3,lambda3=1,lambda4=0,lambda5=0.mat'];
-% configs.result_path = [configs.dataset_path,'R-test.mat'];
+configs.raw_dataset_path = 'raw_data/Gowalla_vldb/';
+configs.processed_dataset_path='processed_data/Gowalla_vldb/'
+
+configs.result_path = [configs.dataset_path,'R-Gowalla.mat'];
 configs.save_rating_matrix=true;
 % preprocess parameters
 configs.num_user_knn = 100;
