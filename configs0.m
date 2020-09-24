@@ -3,7 +3,7 @@ configs.dataset_name='Gowalla';
 configs.raw_dataset_path = 'raw_data/Gowalla_vldb/';
 configs.processed_dataset_path='processed_data/Gowalla_vldb/'
 
-configs.result_path = [configs.dataset_path,'R-Gowalla.mat'];
+configs.result_path = [configs.processed_dataset_path,'R-Gowalla.mat'];
 configs.save_rating_matrix=true;
 % preprocess parameters
 configs.num_user_knn = 100;
