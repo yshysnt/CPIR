@@ -21,7 +21,7 @@ configs.toy.n_clusters=3;
 configs.lambda_1 = 1;
 configs.lambda_2 = 0.3;
 configs.lambda_3 = 1;
-configs.lambda_4 = 0.1; 
+configs.lambda_4 = 0.0001; 
 configs.lambda_5 = 0;
 configs.iterations = 8;
 % APG paramters
